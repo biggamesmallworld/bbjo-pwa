@@ -17,7 +17,8 @@ a .MuiListItem-button, .MuiIconButton-root {
 }
 
 .full-container {
-	background: linear-gradient(#addef8, #ffffff);
+	/*background: linear-gradient(#addef8, #ffffff);*/
+	background: #16202B;
 	min-height: 100vh;
 }
 
@@ -50,7 +51,7 @@ a .MuiListItem-button, .MuiIconButton-root {
 }
 
 .MuiAppBar-colorPrimary {
-	background-color: #3da8e1 !important;
+	background-color: #16202B !important;
 }
 
 .logo {
