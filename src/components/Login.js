@@ -77,7 +77,7 @@ class Login extends React.Component {
 					<NavbarDrawer />
 					<div className="ml-auto mr-auto contentContainer col-md-6">
 						<form onSubmit={this.onFormSubmit} className="loginForm" >
-							<label className="form-group">
+							<label className="form-group text-white">
 								Username:
 								<input 
 									type='text'
@@ -88,7 +88,7 @@ class Login extends React.Component {
 								/>
 							</label>
 							<br />
-							<label className="form-group ">
+							<label className="form-group text-white">
 								Password:
 								<input 
 									type='password'

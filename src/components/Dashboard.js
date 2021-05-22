@@ -37,7 +37,7 @@ class Dashboard extends React.Component {
 		return (
 			<div>
 				<NavbarDrawer />
-				<div className="ml-auto mr-auto contentContainer col-sm-12 col-md-8">
+				<div className="ml-auto mr-auto contentContainer col-sm-12 col-md-8 text-white">
 					{error && <div className="alert alert-danger">{error}</div>}
 					<p>You are now logged in!</p>
 					<h4>Welcome {this.state.user_displayName}!</h4>
@@ -48,17 +48,16 @@ class Dashboard extends React.Component {
 					>
 						Log Out
 					</Link>
-					<Button 
-						onClick={() => this.setState({showDash: !showDash})}
-						variant="contained" 
-						color="secondary"
-						className="mb-3 ml-2"
-					>
-						Edit Profile
-					</Button>
-					{showDash && 
-						<EditProfile userName={this.state.user_displayName} />
-					}
+					{!showDash ? <Button 
+							onClick={() => this.setState({showDash: !showDash})}
+							variant="contained" 
+							color="secondary"
+							className="mb-3 ml-2"
+						>
+							Edit Profile
+						</Button>
+					: 
+					<EditProfile userName={this.state.user_displayName} />}
 				</div>
 			</div>
 		)

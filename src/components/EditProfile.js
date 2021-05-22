@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import Loader from '../loader.gif';
 import clientConfig from '../client-config';
+import { Editor } from '@tinymce/tinymce-react';
 
 //here is where I pull in the one post that is attached to my username
 
@@ -87,6 +88,7 @@ class EditProfile extends React.Component {
 
     render() {
 		const { profile, loading, postSubmitted, message } = this.state;
+		console.log(profile);
 
 
         return (
@@ -101,12 +103,40 @@ class EditProfile extends React.Component {
 						: null}
 						<div className="form-group w-100">
 							{Object.entries(profile).map(([key, value], index) => {
-    							return (
-									<div key={index} className="form-item">
-										<label htmlFor={key}>{key}</label>
-										<input type="text" name={key} onChange={this.handleInputChange} className="form-control" id={key} value={value}/>
-									</div>
-								)
+								switch(key) {
+									case 'preferences':
+									case 'personal':
+										return (
+											<div key={index} className="form-item">
+												<label htmlFor={key}>{key}</label>
+												<Editor
+													initialValue={value}
+													init={{
+													height: 500,
+													menubar: false,
+													plugins: [
+														'advlist autolink lists link image charmap print preview anchor',
+														'searchreplace visualblocks code fullscreen',
+														'insertdatetime media table paste code help wordcount'
+													],
+													toolbar: 'undo redo | formatselect | ' +
+													'bold italic backcolor | alignleft aligncenter ' +
+													'alignright alignjustify | bullist numlist outdent indent | ' +
+													'removeformat | help',
+													content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
+													}}
+												/>
+											</div>
+										);
+									default:
+										return (
+											<div key={index} className="form-item">
+												<label htmlFor={key}>{key}</label>
+												<input type="text" name={key} onChange={this.handleInputChange} className="form-control" id={key} value={value || ''}/>
+											</div>
+
+										)
+								}
 							})}
 						</div>
 						{/*
